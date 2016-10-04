@@ -11,25 +11,60 @@ import java.util.Set;
  */
 public class TablesSample {
 
+    static class Column {
+
+        final String name;
+
+
+        public Column(String name) {
+            this.name = name;
+
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+
+    }
+    static class CelVal{
+
+        final int score;
+        final String ans;
+        String rStub ="";
+        String sStub = "";
+
+
+        public CelVal(int score, String ans, String sStub, String rStub) {
+            this.score = score;
+            this.ans =ans;
+            this.rStub = rStub;
+            this.sStub = sStub;
+        }
+
+        @Override
+        public String toString() {
+            return ans+" | "+ score+" | "+ sStub+" | "+ rStub;
+        }
+    }
     public static void main(String[] args) {
 
-        Table<String, String, String> weightedGraph = HashBasedTable.create();
+        Table<String, String, CelVal> weightedGraph = HashBasedTable.create();
 
-        weightedGraph.put("A48726AC-76EF-4339-B496-00076CC975C4", "r_stub", "003671CB-FF53-4779-9056-073C48379F53");
-        weightedGraph.put("A48726AC-76EF-4339-B496-00076CC975C4", "scores", "20");
-        weightedGraph.put("A48726AC-76EF-4339-B496-00076CC975C4", "s_stub", "62CA1E71-504E-43B4-84E1-07C781C9B4DB");
-        weightedGraph.put("A48726AC-76EF-4339-B496-00076CC975C4", "a_text", "abc");
+        weightedGraph.put("R1", "Q1", new CelVal(20, "abc", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R1", "Q2", new CelVal(20, "efg", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R1", "Q3", new CelVal(20, "ijk", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R1", "Q4", new CelVal(20, "lmn", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
 
 
-        weightedGraph.put("B48726AC-76EF-4339-B496-00076CC975C4", "r_stub", "003671CB-FF53-4779-9056-073C48379F53");
-        weightedGraph.put("B48726AC-76EF-4339-B496-00076CC975C4", "scores", "10");
-        weightedGraph.put("B48726AC-76EF-4339-B496-00076CC975C4", "s_stub", "62CA1E71-504E-43B4-84E1-07C781C9B4DB");
-        weightedGraph.put("B48726AC-76EF-4339-B496-00076CC975C4", "a_text", "efg");
 
-        weightedGraph.put("C48726AC-76EF-4339-B496-00076CC975C4", "r_stub", "003671CB-FF53-4779-9056-073C48379F53");
-        weightedGraph.put("C48726AC-76EF-4339-B496-00076CC975C4", "scores", "40");
-        weightedGraph.put("C48726AC-76EF-4339-B496-00076CC975C4", "s_stub", "62CA1E71-504E-43B4-84E1-07C781C9B4DB");
-        weightedGraph.put("C48726AC-76EF-4339-B496-00076CC975C4", "a_text", "ijk");
+        weightedGraph.put("R2", "Q1", new CelVal(20, "opq", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R2", "Q2", new CelVal(20, "rst", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R2", "Q3", new CelVal(20, "uvw", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R2", "Q4", new CelVal(20, "xyz", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+
+
 
 //        System.out.println("original table \n"+weightedGraph+"\n");
 
@@ -45,21 +80,21 @@ public class TablesSample {
 
     }
 
-    private static void printTable(Table<String, String, String> t) {
-        Set<String> cols = t.columnKeySet();
+    private static  <E, V, C> void printTable(Table<E, V, C> t) {
+        Set<V> cols = t.columnKeySet();
 
-        Set<String> rows = t.rowKeySet();
+        Set<E> rows = t.rowKeySet();
 
         StringBuffer c = new StringBuffer();
         c.append("\t\t");
-        for(String col : cols) {
+        for(V col : cols) {
             c.append(col).append("\t\t");
         }
         System.out.println(c);
-        for(String r : rows){
+        for(E r : rows){
             StringBuffer row = new StringBuffer();
             row.append(r).append("\t\t");
-            for(String col: cols) {
+            for(V col: cols) {
                 row.append(t.get(r, col)).append("\t\t");
             }
             System.out.println(row);
