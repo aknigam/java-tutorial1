@@ -15,8 +15,12 @@ public class CouchbaseExample {
 
     public static void main(String... args) throws Exception {
         // Initialize the Connection
+//        Cluster cluster = CouchbaseCluster.create("sg20-chb1-bootstrap-vip.core.cvent.org:8091");
+//        Bucket bucket = cluster.openBucket("Data1", "password");
+
         Cluster cluster = CouchbaseCluster.create("ci-cb-01.cvent.net");
         Bucket bucket = cluster.openBucket("bucket1");
+
 
         // Create a JSON Document
         JsonObject arthur = JsonObject.create()

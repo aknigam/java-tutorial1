@@ -45,6 +45,9 @@ public class TablesSample {
 
         @Override
         public String toString() {
+            return ans;
+        }
+        public String toString1() {
             return ans+" | "+ score+" | "+ sStub+" | "+ rStub;
         }
     }
@@ -53,14 +56,14 @@ public class TablesSample {
         Table<String, String, CelVal> weightedGraph = HashBasedTable.create();
 
         weightedGraph.put("R1", "Q1", new CelVal(20, "abc", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
-        weightedGraph.put("R1", "Q2", new CelVal(20, "efg", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
-        weightedGraph.put("R1", "Q3", new CelVal(20, "ijk", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
-        weightedGraph.put("R1", "Q4", new CelVal(20, "lmn", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
-
-
+//        weightedGraph.put("R1", "Q2", new CelVal(20, "efg", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
 
         weightedGraph.put("R2", "Q1", new CelVal(20, "opq", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
         weightedGraph.put("R2", "Q2", new CelVal(20, "rst", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+
+        weightedGraph.put("R1", "Q3", new CelVal(20, "ijk", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+        weightedGraph.put("R1", "Q4", new CelVal(20, "lmn", "R1", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
+
         weightedGraph.put("R2", "Q3", new CelVal(20, "uvw", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
         weightedGraph.put("R2", "Q4", new CelVal(20, "xyz", "R2", "62CA1E71-504E-43B4-84E1-07C781C9B4DB"));
 
